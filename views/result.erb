@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      div { height: 200px; text-align: center; }
+      span { font-weight: bold; }
+      a { display: block; text-align: center; width: 100%; }
+    </style>
+    <title>Result</title>
+  </head>
+  <body>
+    <div>
+    <% if capital.empty? %>
+      <span>該当するデータがありません</span>
+    <% else %>
+      <span><%= country %></span>の首都は<span><%= capital %></span>です
+    <% end %>
+    </div>
+    <a href="/">戻る</a>
+  </body>
+</html>
