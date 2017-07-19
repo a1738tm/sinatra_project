@@ -3,8 +3,7 @@ require 'csv'
 
 configure do
   data = {}
-  csv = CSV.read('db/data.csv')
-  csv.each do |row|
+  CSV.read('db/data.csv').each do |row|
     data[row[0]] = {
       'capital' => row[1],
     }
@@ -18,5 +17,9 @@ end
 
 post '/new' do
   country = params['body']
-  erb :result, :locals => { :country => country, :capital => settings.data[country]['capital'] }
+  if country.empty?
+    redirect '/'
+  else
+    erb :result, :locals => { :country => country, :capital => settings.data[country].to_h['capital'].to_s }
+  end
 end
